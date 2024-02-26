@@ -1,0 +1,14 @@
+<% @min = @params['min'].to_f %>
+<% @max = @params['max'].to_f %>
+<% @rand = rand(@min...@max) %>
+
+<h1>Random Results</h1>
+  <dl>
+    <dt>Minimum</dt>
+    <dd><%= @min %></dd>
+    <dt>Maximum</dt>
+    <dd><%= @max %></dd>
+    <dt>Random Number</dt>
+    <dd><%= @rand %></dd>
+  </dl>
+<a href="/random/new">Pick another random number</a>

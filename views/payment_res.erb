@@ -1,0 +1,26 @@
+<% years_left = @params['years_remaining'].to_i %>
+<% apr = @params['apr'].to_f %>
+<% pv = @params['present_value'].to_f %>
+
+<% r = (apr / 100) / 12 %>
+<% n = years_left * 12 %>
+
+<% numerator = (r * pv) %>
+<% denominator = 1 - ((1 + r) ** -n) %>
+
+<% payment =  numerator / denominator %>
+
+<h1>Payment Results</h1>
+
+<dl>
+<dt>APR</dt>
+<dd><%= apr.to_fs(:percentage, {:precision => 4}) %></dd>
+<dt>Number of Years</dt>
+<dd><%= years_left %></dd>
+<dt>Principal</dt>
+<dd><%= pv.to_fs(:currency) %></dd>
+<dt>Payment</dt>
+<dd><%= payment.to_fs(:currency) %> 
+</dl>
+
+<a href="/payment/new">Calculate another payment</a>
